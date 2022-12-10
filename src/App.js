@@ -1,29 +1,30 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import PrivateRoute from "./src/pages/PrivateRoute";
+import Navbar from "./components/navbar/index";
 
 function App() {
   return (
     <Router>
-      {/* <Navbar />
-      <Sidebar />
+      <Navbar />
+      {/* <Sidebar /> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="products" element={<Products />} />
-        <Route path="products/:id" element={<SingleProduct />} />
-        <Route
+        {/* <Route path="/" element={<Home />} /> */}
+        {/* <Route path="about" element={<About />} /> */}
+        {/* <Route path="cart" element={<Cart />} /> */}
+        {/* <Route path="products" element={<Products />} /> */}
+        {/* <Route path="products/:id" element={<SingleProduct />} /> */}
+        {/* <Route
           path="checkout"
           element={
             <PrivateRoute>
               <Checkout />
             </PrivateRoute>
           }
-        />
-        <Route path="*" element={<Error />} />
+        /> */}
+        {/* <Route path="*" element={<Error />} /> */}
       </Routes>
-      <Footer /> */}
+      {/* // <Footer /> */}
     </Router>
   );
 }
