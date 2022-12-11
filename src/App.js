@@ -2,12 +2,14 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import PrivateRoute from "./src/pages/PrivateRoute";
 import Navbar from "./components/navbar/index";
+import Sidebar from "./components/sidebar/index";
+import Footer from "./components/footer/index";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      {/* <Sidebar /> */}
+      <Sidebar />
       <Routes>
         {/* <Route path="/" element={<Home />} /> */}
         {/* <Route path="about" element={<About />} /> */}
@@ -24,7 +26,7 @@ function App() {
         /> */}
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>
-      {/* // <Footer /> */}
+      <Footer />
     </Router>
   );
 }

@@ -9,18 +9,18 @@ import { useUserContext } from "../../context/user-context/UserContext";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-around items-center py-1 bg-amber-100">
+    <div className="flex justify-between lg:justify-around items-center py-1 bg-amber-100">
       <NavLink to="/">
         <img src={logo} alt="logo" />
       </NavLink>
 
-      <div className="flex ">
+      <div className="hidden lg:flex">
         {links.map((link) => {
           const { id, text, url } = link;
           return (
             <li
               key={id}
-              className="list-none mx-4 hover:text-amber-700 font-light"
+              className="list-none mx-4 hover:text-yellow-800 font-light"
             >
               <NavLink to={url} className="capitalize text-xl">
                 {text}
@@ -29,11 +29,12 @@ const Navbar = () => {
           );
         })}
       </div>
+      <div className="hidden lg:flex">
+        <CartButtons />
+      </div>
 
-      <CartButtons />
-
-      <button type="button" className="p-1 hidden">
-        <FaBars className="fill-amber-700 h-8 w-8" />
+      <button type="button" className="p-1 mr-4 lg:hidden">
+        <FaBars className="fill-yellow-800 h-8 w-8" />
       </button>
     </div>
   );
