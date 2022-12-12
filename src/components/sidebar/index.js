@@ -8,14 +8,19 @@ import { useProductsContext } from "../../context/products-context/ProductsConte
 import { useUserContext } from "../../context/user-context/UserContext";
 
 const Sidebar = () => {
-  let isOpen = true;
+  const { isSidebarOpen, closeSidebar } = useProductsContext();
+
   return (
     <>
-      {isOpen ? (
+      {isSidebarOpen ? (
         <aside className="z-100 fixed top-0 right-0 h-screen w-screen bg-amber-100 lg:hidden">
           <div className="flex justify-between">
             <img src={logo} alt="logo" />
-            <button type="button" className="mr-4 text-red-800">
+            <button
+              type="button"
+              className="mr-4 text-red-800"
+              onClick={closeSidebar}
+            >
               <FaTimes className="w-8 h-8" />
             </button>
           </div>
@@ -28,7 +33,11 @@ const Sidebar = () => {
                   key={id}
                   className="list-none hover:text-yellow-800 font-light mt-8"
                 >
-                  <NavLink to={url} className="capitalize text-xl">
+                  <NavLink
+                    to={url}
+                    onClick={closeSidebar}
+                    className="capitalize text-xl"
+                  >
                     {text}
                   </NavLink>
                 </li>
@@ -38,6 +47,7 @@ const Sidebar = () => {
             <div className="mt-8">
               <NavLink
                 to="/checkout"
+                onClick={closeSidebar}
                 className="hover:text-yellow-800 font-light text-xl"
               >
                 Checkout

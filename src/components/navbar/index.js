@@ -8,6 +8,8 @@ import { useProductsContext } from "../../context/products-context/ProductsConte
 import { useUserContext } from "../../context/user-context/UserContext";
 
 const Navbar = () => {
+  const { openSidebar } = useProductsContext();
+
   return (
     <div className="flex justify-between lg:justify-around items-center py-1 bg-amber-100">
       <NavLink to="/">
@@ -33,7 +35,11 @@ const Navbar = () => {
         <CartButtons />
       </div>
 
-      <button type="button" className="p-1 mr-4 lg:hidden">
+      <button
+        type="button"
+        className="p-1 mr-4 lg:hidden"
+        onClick={openSidebar}
+      >
         <FaBars className="fill-yellow-800 h-8 w-8" />
       </button>
     </div>
