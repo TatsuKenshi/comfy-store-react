@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/index";
 import Sidebar from "./components/sidebar/index";
 import Footer from "./components/footer/index";
+import Home from "./pages/home";
+import Error from "./pages/error/index";
 
 function App() {
   return (
@@ -11,7 +13,7 @@ function App() {
       <Navbar />
       <Sidebar />
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<Home />} />
         {/* <Route path="about" element={<About />} /> */}
         {/* <Route path="cart" element={<Cart />} /> */}
         {/* <Route path="products" element={<Products />} /> */}
@@ -24,7 +26,7 @@ function App() {
             </PrivateRoute>
           }
         /> */}
-        {/* <Route path="*" element={<Error />} /> */}
+        <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
     </Router>
