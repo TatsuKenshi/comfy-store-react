@@ -6,6 +6,8 @@ import Sidebar from "./components/sidebar/index";
 import Footer from "./components/footer/index";
 import Home from "./pages/home";
 import Error from "./pages/error/index";
+import About from "./pages/about/index";
+import Checkout from "./pages/checkout";
 
 function App() {
   return (
@@ -14,18 +16,18 @@ function App() {
       <Sidebar />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="about" element={<About />} /> */}
+        <Route path="about" element={<About />} />
         {/* <Route path="cart" element={<Cart />} /> */}
         {/* <Route path="products" element={<Products />} /> */}
         {/* <Route path="products/:id" element={<SingleProduct />} /> */}
-        {/* <Route
+        <Route
           path="checkout"
           element={
-            <PrivateRoute>
-              <Checkout />
-            </PrivateRoute>
+            // <PrivateRoute>
+            <Checkout />
+            // </PrivateRoute>
           }
-        /> */}
+        />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
