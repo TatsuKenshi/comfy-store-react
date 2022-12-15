@@ -3,7 +3,7 @@ import PageHero from "../../components/page-hero/index";
 
 const Checkout = () => {
   return (
-    <main className="w-screen bg-white min-h-[800px]">
+    <main className="bg-white min-h-[800px] bg-pink-100">
       <PageHero title="Checkout" />
       <section>
         <h1>Checkout here</h1>
