@@ -5,7 +5,7 @@ import HomeHero from "../../components/home-hero";
 
 const Home = () => {
   return (
-    <main className="w-screen bg-white">
+    <main className="w-full bg-white">
       <HomeHero />
       <FeaturedProducts />
       <Services />

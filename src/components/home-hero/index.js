@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import heroBg from "../../img/hero-bcg.jpeg";
 import heroBg2 from "../../img/hero-bcg-2.jpeg";
 
@@ -18,12 +18,14 @@ const HomeHero = () => {
           praesentium sit ex facere rem totam, nostrum repudiandae asperiores
           reprehenderit veniam id saepe.
         </p>
-        <NavLink
-          to="/products"
-          className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
-        >
-          Shop Now
-        </NavLink>
+        <button>
+          <Link
+            to="/products"
+            className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
+          >
+            Shop Now
+          </Link>
+        </button>
       </article>
       <article className="relative mt-8 px-8 z-0">
         <img

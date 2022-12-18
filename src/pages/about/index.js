@@ -4,7 +4,7 @@ import hero from "../../img/hero-bcg.jpeg";
 
 const About = () => {
   return (
-    <main className="w-screen h-max bg-white">
+    <main className="w-full h-max bg-white">
       <PageHero title="About" />
       <section className="flex flex-wrap max-w-[500px] mx-auto px-8 py-16 min-h-[700px] lg:max-w-[900px]">
         <div className="p-2 h-max w-6/6 lg:w-3/6">

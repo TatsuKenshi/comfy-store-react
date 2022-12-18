@@ -11,7 +11,7 @@ const Navbar = () => {
   const { openSidebar } = useProductsContext();
 
   return (
-    <div className="flex justify-between lg:justify-around items-center py-1 bg-amber-100">
+    <nav className="flex justify-between lg:justify-around items-center py-1 bg-amber-100">
       <NavLink to="/">
         <img src={logo} alt="logo" />
       </NavLink>
@@ -42,7 +42,7 @@ const Navbar = () => {
       >
         <FaBars className="fill-yellow-800 h-8 w-8" />
       </button>
-    </div>
+    </nav>
   );
 };
 

@@ -91,7 +91,7 @@ const CheckoutForm = () => {
   };
 
   return (
-    <div>
+    <section>
       {succeeded ? (
         <article>
           <h4>Thank you</h4>
@@ -131,7 +131,7 @@ const CheckoutForm = () => {
           Refresh the page to pay again
         </p>
       </form>
-    </div>
+    </section>
   );
 };
 
