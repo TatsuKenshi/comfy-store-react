@@ -8,6 +8,7 @@ import Home from "./pages/home";
 import Error from "./pages/error/index";
 import About from "./pages/about/index";
 import Checkout from "./pages/checkout";
+import Contact from "./pages/contact";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         {/* <Route path="cart" element={<Cart />} /> */}
         {/* <Route path="products" element={<Products />} /> */}
         {/* <Route path="products/:id" element={<SingleProduct />} /> */}
+        <Route path="contact" element={<Contact />} />
         <Route
           path="checkout"
           element={
