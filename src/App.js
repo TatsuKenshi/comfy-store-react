@@ -9,6 +9,9 @@ import Error from "./pages/error/index";
 import About from "./pages/about/index";
 import Checkout from "./pages/checkout";
 import Contact from "./pages/contact";
+import Cart from "./pages/cart";
+import Products from "./pages/products";
+import SingleProductPage from "./pages/single-product";
 
 function App() {
   return (
@@ -18,9 +21,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
-        {/* <Route path="cart" element={<Cart />} /> */}
-        {/* <Route path="products" element={<Products />} /> */}
-        {/* <Route path="products/:id" element={<SingleProduct />} /> */}
+        <Route path="cart" element={<Cart />} />
+        <Route path="products" element={<Products />} />
+        <Route path="products/:id" element={<SingleProductPage />} />
         <Route path="contact" element={<Contact />} />
         <Route
           path="checkout"
