@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import PrivateRoute from "./src/pages/PrivateRoute";
+import PrivateRoute from "./src/pages/PrivateRoute";
 import Navbar from "./components/navbar/index";
 import Sidebar from "./components/sidebar/index";
 import Footer from "./components/footer/index";
@@ -28,9 +28,9 @@ function App() {
         <Route
           path="checkout"
           element={
-            // <PrivateRoute>
-            <Checkout />
-            // </PrivateRoute>
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
           }
         />
         <Route path="*" element={<Error />} />
