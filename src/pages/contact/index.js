@@ -9,6 +9,7 @@ const Contact = () => {
     formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
+    delayError: 500,
     defaultValues: {
       firstName: "",
       lastName: "",
