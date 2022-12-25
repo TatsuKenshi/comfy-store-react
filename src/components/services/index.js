@@ -7,7 +7,7 @@ const Services = () => {
       <div>
         <article className="lg:flex">
           <h3 className="text-2xl mb-4 lg:w-[50%]">
-            Custom Furniture <br /> Built Only For You
+            Premium Furniture <br /> Built With Love
           </h3>
           <p className="lg:w-[50%]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
