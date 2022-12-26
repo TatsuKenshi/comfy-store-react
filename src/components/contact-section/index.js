@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ContactUs = () => {
   return (
-    <section className="flex flex-wrap justify-center items-center w-full p-8 lg:max-w-[900px] lg:mx-auto">
+    <section className="flex flex-wrap justify-center items-center w-full p-8 lg:max-w-[900px] lg:mx-auto lg:px-16 bg-slate-100 mb-16">
       <article className="lg:flex">
         <h3 className="text-2xl mb-4 lg:w-[50%]">
           Custom Shop <br /> Built Only For You
@@ -15,7 +15,7 @@ const ContactUs = () => {
           magnam.
         </p>
       </article>
-      <div className="w-full py-8 text-center">
+      <div className="w-full pt-8 text-center">
         <button>
           <Link
             to="/contact"

@@ -1,17 +1,54 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useProductsContext } from "../../context/products-context/ProductsContext";
+import ErrorComponent from "../error";
+import Loading from "../loading";
+import Product from "../product";
 
 const FeaturedProducts = () => {
+  const {
+    products_loading: loading,
+    products_error: error,
+    featured_products: featured,
+  } = useProductsContext();
+
+  if (loading) {
+    return (
+      <section className="h-max py-8 flex justify-center items-center bg-slate-100">
+        <Loading />
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="h-max py-8 flex justify-center items-center bg-slate-100">
+        <ErrorComponent />
+      </section>
+    );
+  }
+
   return (
-    <section className="h-40 flex justify-center items-center bg-slate-100">
-      <button>
-        <Link
-          to="/products"
-          className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
-        >
-          All Products
-        </Link>
-      </button>
+    <section className="h-max py-8 px-8 lg:px-16 flex flex-wrap justify-center items-center bg-slate-100 lg:max-w-[900px] lg:mx-auto">
+      <div className="w-full">
+        <h2 className="text-3xl">Featured Products</h2>
+        <div className="w-20 h-1 bg-yellow-900 mb-8"></div>
+        <div className="flex flex-wrap justify-between">
+          {featured.map((product) => {
+            return <Product key={product.id} {...product} />;
+          })}
+        </div>
+      </div>
+      <div className="w-full text-center py-4">
+        <button>
+          <Link
+            to="/products"
+            className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
+          >
+            All Products
+          </Link>
+        </button>
+      </div>
     </section>
   );
 };

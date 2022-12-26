@@ -3,11 +3,11 @@ import { services } from "../../utils/constants";
 
 const Services = () => {
   return (
-    <section className="w-full py-8 lg:max-w-[900px] lg:mx-auto px-8 bg-white">
+    <section className="w-full py-8 lg:max-w-[900px] lg:mx-auto px-8 lg:px-16 bg-white">
       <div>
         <article className="lg:flex">
           <h3 className="text-2xl mb-4 lg:w-[50%]">
-            Premium Furniture <br /> Built With Love
+            Premium Furniture <br /> Made With Love
           </h3>
           <p className="lg:w-[50%]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
