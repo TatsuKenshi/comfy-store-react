@@ -10,6 +10,7 @@ import {
 } from "../../Actions";
 
 const reducer = (state, action) => {
+  // sidebar actions
   if (action.type === SIDEBAR_OPEN) {
     return { ...state, isSidebarOpen: true };
   }
@@ -18,6 +19,7 @@ const reducer = (state, action) => {
     return { ...state, isSidebarOpen: false };
   }
 
+  // all products actions
   if (action.type === GET_PRODUCTS_BEGIN) {
     return { ...state, products_loading: true };
   }
@@ -38,7 +40,32 @@ const reducer = (state, action) => {
     return { ...state, products_loading: false, products_error: true };
   }
 
-  return state;
+  // single product actions
+  if (action.type === GET_SINGLE_PRODUCT_BEGIN) {
+    return {
+      ...state,
+      single_product_loading: true,
+      single_product_error: false,
+    };
+  }
+
+  if (action.type === GET_SINGLE_PRODUCT_SUCCESS) {
+    return {
+      ...state,
+      single_product_loading: false,
+      single_product_error: false,
+      single_product: action.payload,
+    };
+  }
+
+  if (action.type === GET_SINGLE_PRODUCT_ERROR) {
+    return {
+      ...state,
+      single_product_loading: false,
+      single_product_error: true,
+    };
+  }
+
   throw new Error(`No matching '${action.type}' - action type`);
 };
 
