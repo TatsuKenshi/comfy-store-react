@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useProductsContext } from "../../context/products-context/ProductsContext";
 import { single_product_url as url } from "../../utils/constants";
-import { formatPrice } from "../../utils/helpers";
+import { capitalizeTitle, formatPrice } from "../../utils/helpers";
 import Loading from "../../components/loading";
 import ErrorComponent from "../../components/error";
 import ProductImages from "../../components/product-images";
@@ -36,6 +36,7 @@ const SingleProductPage = () => {
     }
   }, [error, navigate]);
 
+  // loading return
   if (loading) {
     return (
       <section>
@@ -44,6 +45,7 @@ const SingleProductPage = () => {
     );
   }
 
+  // error return
   if (error) {
     return (
       <section>
@@ -52,13 +54,57 @@ const SingleProductPage = () => {
     );
   }
 
+  const {
+    name,
+    price,
+    description,
+    stock,
+    stars,
+    reviews,
+    id: sku,
+    company,
+    images,
+  } = product;
+
+  // regular return
   return (
     <section>
-      <PageHero></PageHero>
-      <h2>{params.id.slice(1)}</h2>
-      {/* <Stars></Stars> */}
-      {/* <ProductImages></ProductImages> */}
-      {/* <AddToCart></AddToCart> */}
+      <PageHero title={name} product />
+
+      <div>
+        <button>
+          <Link
+            to="/products"
+            className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
+          >
+            Back to Products
+          </Link>
+        </button>
+      </div>
+
+      <div>
+        <ProductImages></ProductImages>
+        <div>
+          <h2>{name && capitalizeTitle(name)}</h2>
+          <Stars></Stars>
+          <h5>{price && formatPrice(price)}</h5>
+          <p>{description}</p>
+          <p>
+            <span>Availability : </span>
+            {stock > 0 ? "In stock" : "Out of stock"}
+          </p>
+          <p>
+            <span>SKU : </span>
+            {sku?.slice(1)}
+          </p>
+          <p>
+            <span>Brand : </span>
+            {company && capitalizeTitle(company)}
+          </p>
+          <hr />
+          {stock > 0 && <AddToCart></AddToCart>}
+        </div>
+      </div>
     </section>
   );
 };
