@@ -39,7 +39,7 @@ const SingleProductPage = () => {
   // loading return
   if (loading) {
     return (
-      <section>
+      <section className="bg-white">
         <Loading />
       </section>
     );
@@ -48,7 +48,7 @@ const SingleProductPage = () => {
   // error return
   if (error) {
     return (
-      <section>
+      <section className="bg-white">
         <ErrorComponent />
       </section>
     );
@@ -68,41 +68,46 @@ const SingleProductPage = () => {
 
   // regular return
   return (
-    <section>
+    <section className="bg-white">
       <PageHero title={name} product />
 
-      <div>
-        <button>
-          <Link
-            to="/products"
-            className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
-          >
-            Back to Products
-          </Link>
-        </button>
-      </div>
+      <div className="max-w-[900px] mx-auto py-16 px-8 lg:py-16">
+        <div className="mb-16">
+          <button>
+            <Link
+              to="/products"
+              className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
+            >
+              Back to Products
+            </Link>
+          </button>
+        </div>
 
-      <div>
-        <ProductImages></ProductImages>
-        <div>
-          <h2>{name && capitalizeTitle(name)}</h2>
-          <Stars></Stars>
-          <h5>{price && formatPrice(price)}</h5>
-          <p>{description}</p>
-          <p>
-            <span>Availability : </span>
-            {stock > 0 ? "In stock" : "Out of stock"}
-          </p>
-          <p>
-            <span>SKU : </span>
-            {sku?.slice(1)}
-          </p>
-          <p>
-            <span>Brand : </span>
-            {company && capitalizeTitle(company)}
-          </p>
-          <hr />
-          {stock > 0 && <AddToCart></AddToCart>}
+        <div className="block lg:flex lg:justify-between">
+          <div className="w-[100%] lg:w-[49%]">
+            <ProductImages images={images}></ProductImages>
+          </div>
+
+          <article className="w-[100%] lg:w-[49%]">
+            <h2>{name && capitalizeTitle(name)}</h2>
+            <Stars></Stars>
+            <h5>{price && formatPrice(price)}</h5>
+            <p>{description}</p>
+            <p>
+              <span>Availability : </span>
+              {stock > 0 ? "In stock" : "Out of stock"}
+            </p>
+            <p>
+              <span>SKU : </span>
+              {sku?.slice(1)}
+            </p>
+            <p>
+              <span>Brand : </span>
+              {company && capitalizeTitle(company)}
+            </p>
+            <hr />
+            {stock > 0 && <AddToCart></AddToCart>}
+          </article>
         </div>
       </div>
     </section>
