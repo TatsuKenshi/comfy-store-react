@@ -6,7 +6,11 @@ const ProductImages = ({ images = [{ url: "" }] }) => {
     <div className="max-w-[900px]">
       {/* main image */}
       <div>
-        <img src={mainImage.url} alt="main" className="w-[100%]" />
+        <img
+          src={mainImage.url}
+          alt="main"
+          className="w-[100%] h-[40vh] lg:h-80"
+        />
       </div>
 
       {/* small images */}

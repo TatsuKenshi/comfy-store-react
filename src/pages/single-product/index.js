@@ -84,28 +84,34 @@ const SingleProductPage = () => {
         </div>
 
         <div className="block lg:flex lg:justify-between">
-          <div className="w-[100%] lg:w-[49%]">
+          <div className="w-[100%] lg:w-[48%]">
             <ProductImages images={images}></ProductImages>
           </div>
 
-          <article className="w-[100%] lg:w-[49%]">
-            <h2>{name && capitalizeTitle(name)}</h2>
-            <Stars></Stars>
-            <h5>{price && formatPrice(price)}</h5>
-            <p>{description}</p>
-            <p>
-              <span>Availability : </span>
+          <article className="w-[100%] lg:w-[48%]">
+            <h2 className="text-xl font-bold">
+              {name && capitalizeTitle(name)}
+            </h2>
+            <div className="mt-2">
+              <Stars stars={stars} reviews={reviews}></Stars>
+            </div>
+            <h5 className="text-amber-900 font-bold mt-2">
+              {price && formatPrice(price)}
+            </h5>
+            <p className="mt-2">{description}</p>
+            <p className="mt-4">
+              <span className="mr-[20px] font-bold">Availability : </span>
               {stock > 0 ? "In stock" : "Out of stock"}
             </p>
-            <p>
-              <span>SKU : </span>
+            <p className="mt-4">
+              <span className="mr-[75px] font-bold">SKU : </span>
               {sku?.slice(1)}
             </p>
-            <p>
-              <span>Brand : </span>
+            <p className="mt-4">
+              <span className="mr-[60px] font-bold">Brand : </span>
               {company && capitalizeTitle(company)}
             </p>
-            <hr />
+            <hr className="my-4" />
             {stock > 0 && <AddToCart></AddToCart>}
           </article>
         </div>
