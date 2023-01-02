@@ -112,10 +112,12 @@ const SingleProductPage = () => {
               {company && capitalizeTitle(company)}
             </p>
             <hr className="my-4" />
-            {stock > 0 && <AddToCart></AddToCart>}
+            {stock > 0 && <AddToCart product={product}></AddToCart>}
           </article>
         </div>
       </div>
+
+      <div>similar products</div>
     </section>
   );
 };
