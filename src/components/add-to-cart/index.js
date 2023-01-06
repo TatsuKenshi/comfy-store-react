@@ -8,6 +8,27 @@ const AddToCart = ({ product }) => {
   const { id, stock, colors } = product;
 
   const [mainColor, setMainColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
+
+  const increaseAmount = () => {
+    setAmount((previousAmount) => {
+      let newAmount = previousAmount + 1;
+      if (newAmount > stock) {
+        newAmount = stock;
+      }
+      return newAmount;
+    });
+  };
+
+  const decreaseAmount = () => {
+    setAmount((previousAmount) => {
+      let newAmount = previousAmount - 1;
+      if (newAmount < 1) {
+        newAmount = 1;
+      }
+      return newAmount;
+    });
+  };
 
   return (
     <div>
@@ -34,7 +55,22 @@ const AddToCart = ({ product }) => {
           })}
         </div>
       </div>
-      <div></div>
+
+      <div>
+        <AmountButtons
+          amount={amount}
+          increaseAmount={increaseAmount}
+          decreaseAmount={decreaseAmount}
+        />
+        <button>
+          <Link
+            to="/cart"
+            className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
+          >
+            Add to Cart
+          </Link>
+        </button>
+      </div>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import ProductImages from "../../components/product-images";
 import AddToCart from "../../components/add-to-cart";
 import Stars from "../../components/stars";
 import PageHero from "../../components/page-hero";
+import SimilarProducts from "../../components/similar-products";
 
 const SingleProductPage = () => {
   const params = useParams();
@@ -117,7 +118,9 @@ const SingleProductPage = () => {
         </div>
       </div>
 
-      <div>similar products</div>
+      <div>
+        <SimilarProducts />
+      </div>
     </section>
   );
 };
