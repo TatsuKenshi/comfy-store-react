@@ -21,7 +21,6 @@ const SingleProductPage = () => {
     single_product: product,
     fetchSingleProduct,
   } = useProductsContext();
-  console.log(product);
 
   // fetching useEffect
   useEffect(() => {

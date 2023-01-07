@@ -11,6 +11,7 @@ import {
   GET_SINGLE_PRODUCT_BEGIN,
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
+  SET_SIMILAR_PRODUCTS,
 } from "../../Actions";
 
 const initialState = {
@@ -22,6 +23,7 @@ const initialState = {
   single_product_loading: false,
   single_product_error: false,
   single_product: {},
+  similar_products: [],
 };
 
 const ProductsContext = React.createContext();
@@ -52,6 +54,7 @@ export const ProductsProvider = ({ children }) => {
   };
 
   // fetch single product
+  // set similar products
   const fetchSingleProduct = async (url) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
 
@@ -59,6 +62,7 @@ export const ProductsProvider = ({ children }) => {
       const response = await axios.get(url);
       const singleProduct = response.data;
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct });
+      dispatch({ type: SET_SIMILAR_PRODUCTS, payload: singleProduct });
     } catch (error) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
     }

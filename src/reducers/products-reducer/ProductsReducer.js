@@ -7,6 +7,7 @@ import {
   GET_SINGLE_PRODUCT_BEGIN,
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
+  SET_SIMILAR_PRODUCTS,
 } from "../../Actions";
 
 const reducer = (state, action) => {
@@ -63,6 +64,21 @@ const reducer = (state, action) => {
       ...state,
       single_product_loading: false,
       single_product_error: true,
+    };
+  }
+
+  if (action.type === SET_SIMILAR_PRODUCTS) {
+    const allCategoryItems = state.products.filter((product) => {
+      return product.category === action.payload.category;
+    });
+
+    const similarItems = allCategoryItems.filter((item) => {
+      return item.name !== action.payload.name;
+    });
+
+    return {
+      ...state,
+      similar_products: similarItems,
     };
   }
 
