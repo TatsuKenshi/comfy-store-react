@@ -24,8 +24,8 @@ const SingleProductPage = () => {
 
   // fetching useEffect
   useEffect(() => {
-    fetchSingleProduct(`${url}${params.id.slice(1)}`);
-  }, []);
+    fetchSingleProduct(`${url}${params.id}`);
+  }, [params.id]);
 
   // error redirection useEffect
   useEffect(() => {

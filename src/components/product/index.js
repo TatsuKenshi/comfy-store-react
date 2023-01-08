@@ -13,7 +13,7 @@ const Product = ({ image, name, price, id }) => {
           className="w-full h-[45vw] md:h-[130px] lg:h-[150px]"
         />
         <Link
-          to={`/products/:${id}`}
+          to={`/products/${id}`}
           className="absolute top-0 left-0 opacity-0 hover:opacity-100 py-[22%] px-[45.5%] md:py-[19%] md:px-[42%] lg:py-[24%] lg:px-[42%]"
         >
           <div className="p-2 bg-yellow-50 rounded-full">
