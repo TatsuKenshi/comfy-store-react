@@ -22,6 +22,12 @@ const Filters = () => {
     all_products,
   } = useFilterContext();
 
+  // get unique category, company, and color values
+  const categories = getUniqueValues(all_products, "category");
+  const companies = getUniqueValues(all_products, "company");
+  const colors = getUniqueValues(all_products, "colors");
+  console.log(colors);
+
   return (
     <section className="mb-4 lg:mb-0">
       <div className="pt-1">
