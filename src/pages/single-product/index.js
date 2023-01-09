@@ -105,7 +105,7 @@ const SingleProductPage = () => {
             </p>
             <p className="mt-4">
               <span className="mr-[75px] font-bold">SKU : </span>
-              {sku?.slice(1)}
+              {sku}
             </p>
             <p className="mt-4">
               <span className="mr-[60px] font-bold">Brand : </span>
