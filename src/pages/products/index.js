@@ -14,7 +14,7 @@ const Products = () => {
           <Filters />
         </aside>
         <article className="lg:w-[73%]">
-          <div className="bg-amber-200 mb-4">
+          <div className="mb-4">
             <Sort />
           </div>
           <div>

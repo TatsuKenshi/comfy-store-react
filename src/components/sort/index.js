@@ -3,7 +3,12 @@ import { useFilterContext } from "../../context/filter-context/FilterContext";
 import { BsFillGridFill, BsList } from "react-icons/bs";
 
 const Sort = () => {
-  const { filtered_products: products, grid_view } = useFilterContext();
+  const {
+    filtered_products: products,
+    grid_view,
+    setGridView,
+    setListView,
+  } = useFilterContext();
 
   return (
     <section className="sm:flex items-center justify-between">
@@ -15,6 +20,7 @@ const Sort = () => {
                 ? "border border-solid border-black rounded-md text-white bg-black p-1 mr-2"
                 : "border border-solid border-black rounded-md p-1 mr-2"
             } `}
+            onClick={setGridView}
           >
             <BsFillGridFill />
           </button>
@@ -25,6 +31,7 @@ const Sort = () => {
                 ? "border border-solid border-black rounded-md p-1 mr-2"
                 : "border border-solid border-black rounded-md text-white bg-black p-1 mr-2"
             } `}
+            onClick={setListView}
           >
             <BsList />
           </button>
