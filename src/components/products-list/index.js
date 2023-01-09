@@ -8,26 +8,26 @@ const ProductsList = () => {
 
   if (products.length < 1) {
     return (
-      <div className="text-center pt-48 pb-96">
+      <section className="text-center pt-48 pb-96">
         <h5 className="text-3xl font-bold text-red-500">
           Sorry, no products match your search...
         </h5>
-      </div>
+      </section>
     );
   }
 
   if (!grid_view) {
     return (
-      <div>
+      <section>
         <ListView products={products} />
-      </div>
+      </section>
     );
   }
 
   return (
-    <div>
+    <section>
       <GridView products={products} />
-    </div>
+    </section>
   );
 };
 
