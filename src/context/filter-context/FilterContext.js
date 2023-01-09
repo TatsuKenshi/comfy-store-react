@@ -12,18 +12,33 @@ import {
 } from "../../Actions";
 import { useProductsContext } from "../../context/products-context/ProductsContext";
 
-const initialState = {};
+const initialState = {
+  filtered_products: [],
+  all_products: [],
+  grid_view: false,
+};
 
 const FilterContext = React.createContext();
 
 export const FilterProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  // get all products from the Products context
+  const { products } = useProductsContext();
+
+  // load all products into the base filter context array
+  useEffect(() => {
+    dispatch({ type: LOAD_PRODUCTS, payload: products });
+  }, [products]);
+
   return (
-    <FilterContext.Provider value="filter context">
+    <FilterContext.Provider value={{ ...state }}>
       {children}
     </FilterContext.Provider>
   );
 };
-// make sure use
+
+// custom hook function - move it out
 export const useFilterContext = () => {
   return useContext(FilterContext);
 };

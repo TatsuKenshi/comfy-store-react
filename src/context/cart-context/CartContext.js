@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useReducer } from "react";
-import reducer from "../../reducers/cart-retucer/CartReducer";
+import reducer from "../../reducers/cart-reducer/CartReducer";
 import {
   ADD_TO_CART,
   REMOVE_CART_ITEM,
