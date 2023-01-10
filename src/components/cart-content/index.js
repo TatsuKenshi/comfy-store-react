@@ -28,13 +28,11 @@ const CartContent = () => {
           </Link>
         </button>
 
-        <button className="my-4" onClick={clearCart}>
-          <Link
-            to="/checkout"
-            className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
-          >
-            Clear Cart
-          </Link>
+        <button
+          className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
+          onClick={clearCart}
+        >
+          Clear Cart
         </button>
       </div>
 

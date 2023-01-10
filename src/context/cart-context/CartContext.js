@@ -35,17 +35,25 @@ export const CartProvider = ({ children }) => {
   };
 
   // removeItem
-  const removeItem = (id) => {};
+  const removeItem = (id) => {
+    dispatch({ type: REMOVE_CART_ITEM, payload: id });
+  };
 
   // toggleAmount
-  const toggleAmount = (id, value) => {};
+  const toggleAmount = (id, value) => {
+    dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } });
+    console.log(id, value);
+  };
 
   // clearCart
-  const clearCart = () => {};
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART });
+  };
 
   // local storage useEffect
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cart));
+    dispatch({ type: COUNT_CART_TOTALS });
   }, [state.cart]);
 
   return (

@@ -5,12 +5,14 @@ import { FaTrash } from "react-icons/fa";
 import { useCartContext } from "../../context/cart-context/CartContext";
 
 const CartItem = ({ id, image, name, color, price, amount }) => {
-  console.log(color);
   const { removeItem, toggleAmount } = useCartContext();
 
-  const increase = () => {};
-
-  const decrease = () => {};
+  const increaseAmount = () => {
+    toggleAmount(id, "increase");
+  };
+  const decreaseAmount = () => {
+    toggleAmount(id, "decrease");
+  };
 
   return (
     <div className="flex py-4 justify-between">
@@ -50,8 +52,8 @@ const CartItem = ({ id, image, name, color, price, amount }) => {
       <div className="w-[content] md:w-[22.5%] flex justify-start items-center">
         <AmountButtons
           amount={amount}
-          increase={increase}
-          decrease={decrease}
+          increaseAmount={increaseAmount}
+          decreaseAmount={decreaseAmount}
         />
       </div>
       {/* end of amount buttons */}
@@ -64,7 +66,7 @@ const CartItem = ({ id, image, name, color, price, amount }) => {
 
       {/* remove button */}
       <div className="w-content md:w-[10%] flex justify-end items-center">
-        <button className="mr-2">
+        <button className="mr-2" onClick={() => removeItem(id)}>
           <FaTrash className="h-6 w-6 text-red-700" />
         </button>
       </div>

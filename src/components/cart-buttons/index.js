@@ -7,6 +7,7 @@ import { useUserContext } from "../../context/user-context/UserContext";
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
+  const { total_items } = useCartContext();
 
   return (
     <div className="flex">
@@ -20,7 +21,7 @@ const CartButtons = () => {
           <FaShoppingCart className="w-8 h-8 ml-1" />
         </span>
         <span className="bg-yellow-800 px-0.5 rounded-full text-white text-sm absolute top-0 left-14">
-          12
+          {total_items}
         </span>
       </Link>
       <button
