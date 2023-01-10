@@ -22,6 +22,8 @@ const Filters = () => {
     all_products,
   } = useFilterContext();
 
+  console.log(shipping);
+
   // get unique category, company, and color values
   const categories = getUniqueValues(all_products, "category");
   const companies = getUniqueValues(all_products, "company");
@@ -124,7 +126,7 @@ const Filters = () => {
                     data-color="all"
                     className={`${
                       color === col
-                        ? "text-left my-1 capitalize text-yellow-800 mr-1 capitalize text-lg font-bold"
+                        ? "text-left my-1 capitalize text-yellow-800 mr-2 capitalize text-lg"
                         : "text-left my-1 capitalize mr-2 capitalize text-lg"
                     }`}
                   >
@@ -151,7 +153,58 @@ const Filters = () => {
           </div>
         </div>
         {/* end of colors */}
+
+        {/* price */}
+        <div className="mt-4">
+          <div>
+            <h5 className="font-bold">Price</h5>
+          </div>
+
+          <div className="hidden lg:block">
+            <p className="text-yellow-900">{formatPrice(price)}</p>
+            <input
+              type="range"
+              name="price"
+              onChange={updateFilters}
+              min={min_price}
+              max={max_price}
+              value={price}
+              className=" w-[100%] sm:w-[50%] lg:w-[100%]"
+            />
+          </div>
+        </div>
+        {/* end of price */}
+
+        {/* shipping */}
+        <div className="mt-4">
+          <div>
+            <h5 className="font-bold">Shipping Options</h5>
+          </div>
+
+          <div className="hidden lg:block">
+            <label htmlFor="shipping" className="mr-12 capitalize">
+              free shipping
+            </label>
+            <input
+              type="checkbox"
+              name="shipping"
+              id="shipping"
+              onChange={updateFilters}
+              checked={shipping}
+            />
+          </div>
+        </div>
+        {/* end of shipping */}
       </form>
+
+      <div>
+        <button
+          className="mt-4 p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
+          onClick={clearFilters}
+        >
+          Clear Filters
+        </button>
+      </div>
     </section>
   );
 };
