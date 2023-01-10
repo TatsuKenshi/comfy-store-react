@@ -17,9 +17,10 @@ const ListView = ({ products }) => {
                 className="w-[100%] h-[45vw] md:h-[160px]"
               />
             </div>
-            <div className="w-[64%]">
-              <h4>{name}</h4>
-              <h5>{formatPrice(price)}</h5>
+
+            <div className="md:w-[64%]">
+              <h4 className="capitalize font-medium">{name}</h4>
+              <h5 className="text-yellow-900">{formatPrice(price)}</h5>
               <p>{description.substring(0, 150)}...</p>
               <button className="mt-2">
                 <Link
