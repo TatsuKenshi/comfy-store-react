@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useFilterContext } from "../../context/filter-context/FilterContext";
 import { getUniqueValues, formatPrice } from "../../utils/helpers";
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const Filters = () => {
-  const [visibleOnSmallScreen, setVisibleOnSmallScreen] = useState("invisible");
-
+  // filter context state imports
   const {
     filters: {
       text,
@@ -22,6 +21,7 @@ const Filters = () => {
     all_products,
   } = useFilterContext();
 
+  // filter visibility states for small screens
   const [expandForm, setExpandForm] = useState("hidden");
   const [showSearch, setShowSearch] = useState("hidden");
   const [showCategory, setShowCategory] = useState("hidden");
@@ -30,7 +30,7 @@ const Filters = () => {
   const [showPrice, setShowPrice] = useState("hidden");
   const [showShipping, setShowShipping] = useState("hidden");
 
-  // get unique category, company, and color values
+  // unique category, company, and color values
   const categories = getUniqueValues(all_products, "category");
   const companies = getUniqueValues(all_products, "company");
   const colors = getUniqueValues(all_products, "colors");
@@ -55,7 +55,7 @@ const Filters = () => {
             }
           }}
         >
-          {expandForm ? "expand" : "collapse"}
+          {expandForm ? "show filters" : "hide filters"}
         </button>
       </div>
 
@@ -77,7 +77,7 @@ const Filters = () => {
                 }
               }}
             >
-              {showSearch ? "show filter" : "hide filter"}
+              {showSearch ? <FaChevronDown /> : <FaChevronUp />}
             </button>
           </div>
 
@@ -108,7 +108,7 @@ const Filters = () => {
                 }
               }}
             >
-              {showCategory ? "show filter" : "hide filter"}
+              {showCategory ? <FaChevronDown /> : <FaChevronUp />}
             </button>
           </div>
 
@@ -148,7 +148,7 @@ const Filters = () => {
                 }
               }}
             >
-              {showCompany ? "show filter" : "hide filter"}
+              {showCompany ? <FaChevronDown /> : <FaChevronUp />}
             </button>
           </div>
 
@@ -185,7 +185,7 @@ const Filters = () => {
                 }
               }}
             >
-              {showColor ? "show filter" : "hide filter"}
+              {showColor ? <FaChevronDown /> : <FaChevronUp />}
             </button>
           </div>
 
@@ -242,7 +242,7 @@ const Filters = () => {
                 }
               }}
             >
-              {showPrice ? "show filter" : "hide filter"}
+              {showPrice ? <FaChevronDown /> : <FaChevronUp />}
             </button>
           </div>
 
@@ -275,7 +275,7 @@ const Filters = () => {
                 }
               }}
             >
-              {showShipping ? "show filter" : "hide filter"}
+              {showShipping ? <FaChevronDown /> : <FaChevronUp />}
             </button>
           </div>
 
