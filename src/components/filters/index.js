@@ -22,7 +22,13 @@ const Filters = () => {
     all_products,
   } = useFilterContext();
 
-  console.log(shipping);
+  const [expandForm, setExpandForm] = useState("hidden");
+  const [showSearch, setShowSearch] = useState("hidden");
+  const [showCategory, setShowCategory] = useState("hidden");
+  const [showCompany, setShowCompany] = useState("hidden");
+  const [showColor, setShowColor] = useState("hidden");
+  const [showPrice, setShowPrice] = useState("hidden");
+  const [showShipping, setShowShipping] = useState("hidden");
 
   // get unique category, company, and color values
   const categories = getUniqueValues(all_products, "category");
@@ -31,25 +37,57 @@ const Filters = () => {
 
   return (
     <section className="mb-4 lg:mb-0">
-      <div className="pt-1">
+      <div className="pt-1 flex justify-between">
         <h3 className="text-xl">Filters</h3>
-        <hr />
+        <button
+          className="capitalize lg:invisible"
+          onClick={() => {
+            if (expandForm === "hidden") {
+              setExpandForm("");
+            } else {
+              setExpandForm("hidden");
+              setShowSearch("hidden");
+              setShowCategory("hidden");
+              setShowCompany("hidden");
+              setShowColor("hidden");
+              setShowPrice("hidden");
+              setShowShipping("hidden");
+            }
+          }}
+        >
+          {expandForm ? "expand" : "collapse"}
+        </button>
       </div>
 
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className={`${expandForm} lg:block`}
+      >
         {/* search input */}
         <div className="mt-4">
-          <div>
+          <div className="flex justify-between">
             <h5 className="font-bold">Search</h5>
+            <button
+              className="capitalize lg:invisible"
+              onClick={() => {
+                if (showSearch === "hidden") {
+                  setShowSearch("");
+                } else {
+                  setShowSearch("hidden");
+                }
+              }}
+            >
+              {showSearch ? "show filter" : "hide filter"}
+            </button>
           </div>
 
-          <div className="hidden lg:block">
+          <div className={`${showSearch} lg:block`}>
             <input
               type="text"
               name="text"
               placeholder="type here..."
               value={text}
-              className="w-[100%] px-2 text-lg"
+              className="w-[100%] text-lg"
               onChange={updateFilters}
             />
           </div>
@@ -58,11 +96,23 @@ const Filters = () => {
 
         {/* categories */}
         <div className="mt-4">
-          <div>
+          <div className="flex justify-between">
             <h5 className="font-bold">Category</h5>
+            <button
+              className="capitalize lg:invisible"
+              onClick={() => {
+                if (showCategory === "hidden") {
+                  setShowCategory("");
+                } else {
+                  setShowCategory("hidden");
+                }
+              }}
+            >
+              {showCategory ? "show filter" : "hide filter"}
+            </button>
           </div>
 
-          <div className="hidden lg:block">
+          <div className={`${showCategory} lg:block`}>
             {categories.map((cat, index) => {
               return (
                 <button
@@ -86,11 +136,23 @@ const Filters = () => {
 
         {/* companies */}
         <div className="mt-4">
-          <div>
+          <div className="flex justify-between">
             <h5 className="font-bold">Company</h5>
+            <button
+              className="capitalize lg:invisible"
+              onClick={() => {
+                if (showCompany === "hidden") {
+                  setShowCompany("");
+                } else {
+                  setShowCompany("hidden");
+                }
+              }}
+            >
+              {showCompany ? "show filter" : "hide filter"}
+            </button>
           </div>
 
-          <div className="hidden lg:block">
+          <div className={`${showCompany} lg:block`}>
             <select
               name="company"
               value={company}
@@ -111,11 +173,23 @@ const Filters = () => {
 
         {/* colors */}
         <div className="mt-4">
-          <div>
+          <div className="flex justify-between">
             <h5 className="font-bold">Color</h5>
+            <button
+              className="capitalize lg:invisible"
+              onClick={() => {
+                if (showColor === "hidden") {
+                  setShowColor("");
+                } else {
+                  setShowColor("hidden");
+                }
+              }}
+            >
+              {showColor ? "show filter" : "hide filter"}
+            </button>
           </div>
 
-          <div className="hidden lg:block">
+          <div className={`${showColor} lg:block`}>
             {colors.map((col, index) => {
               if (col === "all") {
                 return (
@@ -156,11 +230,23 @@ const Filters = () => {
 
         {/* price */}
         <div className="mt-4">
-          <div>
+          <div className="flex justify-between">
             <h5 className="font-bold">Price</h5>
+            <button
+              className="capitalize lg:invisible"
+              onClick={() => {
+                if (showPrice === "hidden") {
+                  setShowPrice("");
+                } else {
+                  setShowPrice("hidden");
+                }
+              }}
+            >
+              {showPrice ? "show filter" : "hide filter"}
+            </button>
           </div>
 
-          <div className="hidden lg:block">
+          <div className={`${showPrice} lg:block`}>
             <p className="text-yellow-900">{formatPrice(price)}</p>
             <input
               type="range"
@@ -169,7 +255,7 @@ const Filters = () => {
               min={min_price}
               max={max_price}
               value={price}
-              className=" w-[100%] sm:w-[50%] lg:w-[100%]"
+              className="w-[100%]"
             />
           </div>
         </div>
@@ -177,11 +263,23 @@ const Filters = () => {
 
         {/* shipping */}
         <div className="mt-4">
-          <div>
+          <div className="flex justify-between">
             <h5 className="font-bold">Shipping Options</h5>
+            <button
+              className="capitalize lg:invisible"
+              onClick={() => {
+                if (showShipping === "hidden") {
+                  setShowShipping("");
+                } else {
+                  setShowShipping("hidden");
+                }
+              }}
+            >
+              {showShipping ? "show filter" : "hide filter"}
+            </button>
           </div>
 
-          <div className="hidden lg:block">
+          <div className={`${showShipping} lg:block`}>
             <label htmlFor="shipping" className="mr-12 capitalize">
               free shipping
             </label>
@@ -197,7 +295,7 @@ const Filters = () => {
         {/* end of shipping */}
       </form>
 
-      <div>
+      <div className={`${expandForm} lg:block`}>
         <button
           className="mt-4 p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
           onClick={clearFilters}

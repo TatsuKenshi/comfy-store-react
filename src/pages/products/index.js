@@ -10,7 +10,7 @@ const Products = () => {
       <PageHero title="Products" />
 
       <div className="max-w-[900px] mx-auto py-16 px-8 lg:py-16 lg:flex justify-between">
-        <aside className="lg:w-[23%] bg-teal-500">
+        <aside className="lg:w-[23%]">
           <Filters />
         </aside>
         <article className="lg:w-[73%]">
