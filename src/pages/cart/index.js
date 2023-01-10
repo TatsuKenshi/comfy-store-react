@@ -33,7 +33,7 @@ const Cart = () => {
     <section className="bg-white">
       <PageHero title="Cart" />
 
-      <div>
+      <div className="max-w-[900px] mx-auto py-16 px-8 lg:py-16">
         <CartContent />
       </div>
     </section>
