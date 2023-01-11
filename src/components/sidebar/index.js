@@ -9,6 +9,7 @@ import { useUserContext } from "../../context/user-context/UserContext";
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext();
+  const { myUser } = useUserContext();
 
   return (
     <>
@@ -45,13 +46,15 @@ const Sidebar = () => {
             })}
 
             <div className="mt-8">
-              <NavLink
-                to="/checkout"
-                onClick={closeSidebar}
-                className="hover:text-yellow-800 font-light text-xl"
-              >
-                Checkout
-              </NavLink>
+              {myUser && (
+                <NavLink
+                  to="/checkout"
+                  onClick={closeSidebar}
+                  className="hover:text-yellow-800 font-light text-xl"
+                >
+                  Checkout
+                </NavLink>
+              )}
             </div>
           </div>
 

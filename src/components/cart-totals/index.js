@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 
 const CartTotals = () => {
   const { total_amount, shipping_fee } = useCartContext();
+  const { myUser, loginWithRedirect } = useUserContext();
+
   return (
     <div className="text-right">
       <article>
@@ -24,16 +26,28 @@ const CartTotals = () => {
         </h4>
       </article>
 
-      <div className="mt-8 mb-24">
-        <button>
-          <Link
-            to="/checkout"
+      {myUser ? (
+        <div className="mt-8 mb-24">
+          <button>
+            <Link
+              to="/checkout"
+              className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
+            >
+              Checkout
+            </Link>
+          </button>
+        </div>
+      ) : (
+        <div className="mt-8 mb-24">
+          <button
+            type="button"
             className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
+            onClick={loginWithRedirect}
           >
-            Checkout
-          </Link>
-        </button>
-      </div>
+            Login
+          </button>
+        </div>
+      )}
     </div>
   );
 };

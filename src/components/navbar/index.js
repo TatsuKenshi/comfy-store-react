@@ -10,6 +10,8 @@ import { useUserContext } from "../../context/user-context/UserContext";
 const Navbar = () => {
   const { openSidebar } = useProductsContext();
 
+  const { myUser } = useUserContext();
+
   return (
     <nav className="flex justify-between lg:justify-around items-center py-1 bg-amber-100">
       <NavLink to="/">
@@ -30,6 +32,13 @@ const Navbar = () => {
             </li>
           );
         })}
+        {myUser && (
+          <li className="list-none mx-4 hover:text-yellow-800 font-light">
+            <NavLink to="/checkout" className="capitalize text-xl">
+              Checkout
+            </NavLink>
+          </li>
+        )}
       </div>
       <div className="hidden lg:flex">
         <CartButtons />
