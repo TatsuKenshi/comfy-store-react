@@ -1,1 +1,3 @@
-export const reducer = {};
+const reducer = () => {};
+
+export default reducer;

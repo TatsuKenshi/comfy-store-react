@@ -7,7 +7,8 @@ import { useUserContext } from "../../context/user-context/UserContext";
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
-  const { total_items } = useCartContext();
+  const { total_items, clearCart } = useCartContext();
+  const { loginWithRedirect, myUser, logout } = useUserContext();
 
   return (
     <div className="flex">
@@ -24,13 +25,26 @@ const CartButtons = () => {
           {total_items}
         </span>
       </Link>
-      <button
-        type="button"
-        className="flex ml-1 text-lg"
-        onClick={closeSidebar}
-      >
-        Login <FaUserPlus className="w-8 h-8 ml-1" />
-      </button>
+      {myUser ? (
+        <button
+          type="button"
+          className="flex ml-1 text-lg"
+          onClick={() => {
+            logout({ returnTo: window.location.origin });
+            clearCart();
+          }}
+        >
+          Logout <FaUserMinus className="w-8 h-8 ml-1" />
+        </button>
+      ) : (
+        <button
+          type="button"
+          className="flex ml-1 text-lg"
+          onClick={loginWithRedirect}
+        >
+          Login <FaUserPlus className="w-8 h-8 ml-1" />
+        </button>
+      )}
     </div>
   );
 };
