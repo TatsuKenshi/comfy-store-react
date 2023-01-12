@@ -25,6 +25,7 @@ const SingleProductPage = () => {
   // fetching useEffect
   useEffect(() => {
     fetchSingleProduct(`${url}${params.id}`);
+    // eslint-disable-next-line
   }, [params.id]);
 
   // error redirection useEffect

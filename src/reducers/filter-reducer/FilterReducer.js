@@ -72,16 +72,7 @@ const reducer = (state, action) => {
     const { all_products } = state;
 
     // all filter states destructured
-    const {
-      text,
-      category,
-      company,
-      color,
-      price,
-      min_price,
-      max_price,
-      shipping,
-    } = state.filters;
+    const { text, category, company, color, price, shipping } = state.filters;
 
     // tempProducts holds products we'll return
     // initially, it is set to all products
