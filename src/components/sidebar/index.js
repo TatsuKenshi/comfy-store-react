@@ -14,9 +14,9 @@ const Sidebar = () => {
   return (
     <>
       {isSidebarOpen ? (
-        <aside className="z-[100] absolute top-0 right-0 h-[400%] w-screen bg-amber-100 lg:hidden">
+        <aside className="z-[100] absolute top-0 right-0 h-[1500vh] w-full bg-amber-100 lg:hidden">
           <div className="flex justify-between">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo" className="h-[50px]" />
             <button
               type="button"
               className="mr-4 text-red-800"
