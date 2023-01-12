@@ -12,31 +12,34 @@ import Contact from "./pages/contact";
 import Cart from "./pages/cart";
 import Products from "./pages/products";
 import SingleProductPage from "./pages/single-product";
+import AuthWrapper from "./pages/auth-wrapper";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Sidebar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="products" element={<Products />} />
-        <Route path="products/:id" element={<SingleProductPage />} />
-        <Route path="contact" element={<Contact />} />
-        <Route
-          path="checkout"
-          element={
-            <PrivateRoute>
-              <Checkout />
-            </PrivateRoute>
-          }
-        />
-        <Route path="*" element={<Error />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <AuthWrapper>
+      <Router>
+        <Navbar />
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="products" element={<Products />} />
+          <Route path="products/:id" element={<SingleProductPage />} />
+          <Route path="contact" element={<Contact />} />
+          <Route
+            path="checkout"
+            element={
+              <PrivateRoute>
+                <Checkout />
+              </PrivateRoute>
+            }
+          />
+          <Route path="*" element={<Error />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </AuthWrapper>
   );
 }
 export default App;

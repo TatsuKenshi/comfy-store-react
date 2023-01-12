@@ -21,7 +21,7 @@ const ProductImages = ({ images = [{ url: "" }] }) => {
               key={index}
               src={image.url}
               alt={image.filename}
-              className={`w-[18.5%] ${
+              className={`w-[18.5%] h-[65px] lg:h-[48px] ${
                 image.url === mainImage.url
                   ? "border-2 border-black border-solid"
                   : null

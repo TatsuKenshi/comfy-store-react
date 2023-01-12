@@ -19,7 +19,7 @@ const CartItem = ({ id, image, name, color, price, amount }) => {
       {/* item */}
       <div className="w-content md:w-[22.5%] flex justify-start">
         <div className="w-[70px] md:w-[40%] mr-2">
-          <img src={image} alt={name} className="w-100% h-[70px]" />
+          <img src={image} alt={name} className="w-[100%] h-[70px]" />
         </div>
 
         <div>
