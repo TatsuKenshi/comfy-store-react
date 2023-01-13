@@ -59,6 +59,8 @@ const Filters = () => {
         </button>
       </div>
 
+      <div className="h-[1px] w-[100%] bg-stone-400"></div>
+
       <form
         onSubmit={(e) => e.preventDefault()}
         className={`${expandForm} lg:block`}
