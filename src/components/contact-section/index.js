@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ContactUs = () => {
   return (
-    <section className="flex flex-wrap justify-center items-center w-full p-8 lg:max-w-[900px] lg:mx-auto lg:px-16 bg-slate-100 mb-16">
+    <section className="flex flex-wrap justify-center items-center w-full p-8 lg:max-w-[900px] lg:mx-auto lg:px-16 bg-slate-100 mb-32">
       <article className="lg:flex">
         <h3 className="text-2xl mb-4 lg:w-[50%]">
           Custom Shop <br /> Built Only For You

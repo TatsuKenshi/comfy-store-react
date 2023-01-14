@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PageHero from "../../components/page-hero";
 import { useForm } from "react-hook-form";
 
 const Contact = () => {
+  const [messageSent, setMessageSent] = useState("");
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -11,101 +15,114 @@ const Contact = () => {
     mode: "onChange",
     delayError: 500,
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      age: "",
-      gender: "",
-      developer: "yes",
+      fullName: "",
+      email: "",
+      message: "",
     },
   });
 
-  console.log("errors", errors);
-
   return (
-    <section className="bg-pink-500">
+    <section>
       <PageHero title={"Contact"} />
 
-      <form
-        onSubmit={handleSubmit((data) => {
-          console.log(data);
-        })}
-      >
-        <div className="p-4">
-          <div>
-            <label htmlFor="firstName">First Name: </label>
+      <div className="max-w-[900px] mx-auto py-16 px-8 lg:py-16 bg-yellow-100 rounded-md mt-16 mb-32">
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold mb-8">
+            Welcome to the Contact page!
+          </h2>
+          <p>
+            If you have any questions or suggestions regarding our products,
+            prices, and delivery, or would like to order something special from
+            our custom shop, please shoot us an email! We'd love to hear from
+            you!
+          </p>
+        </div>
+
+        <form
+          onSubmit={handleSubmit((data) => {
+            setMessageSent(
+              "Your message has been sent. You will be redirected to the home page shortly."
+            );
+
+            setTimeout(() => {
+              setMessageSent("");
+              navigate("/");
+            }, 5000);
+          })}
+        >
+          <div className="p-4">
+            <div>
+              <label htmlFor="fullName" className="font-bold">
+                Your Name
+              </label>
+            </div>
+            <div>
+              <input
+                {...register("fullName", {
+                  required: "This field is required",
+                  minLength: { value: 4, message: "The name is too short" },
+                })}
+                id="fullName"
+                className="w-[100%] lg:w-[50%] h-8 mt-2 pl-1"
+              />
+            </div>
+            <p>{errors?.fullName?.message}</p>
           </div>
-          <div>
+
+          <div className="p-4">
+            <div>
+              <label htmlFor="email" className="font-bold">
+                Email
+              </label>
+            </div>
+            <div>
+              <input
+                type="email"
+                id="email"
+                {...register("email", {
+                  required: "Email Address is required",
+                })}
+                aria-invalid={errors.mail ? "true" : "false"}
+                className="w-[100%] lg:w-[50%] h-8 mt-2 pl-1"
+              />
+            </div>
+            {errors.mail && <p role="alert">{errors.mail?.message}</p>}
+          </div>
+
+          <div className="p-4">
+            <div>
+              <label htmlFor="message" className="font-bold">
+                Your Message
+              </label>
+            </div>
+            <div>
+              <textarea
+                rows="4"
+                cols="50"
+                {...register("message", {
+                  required: "This field is required",
+                  minLength: { value: 4, message: "The name is too short" },
+                })}
+                id="message"
+                className="w-[100%] lg:w-[50%] h-24 mt-2 pl-1"
+              />
+            </div>
+            <p>{errors?.message?.message}</p>
+          </div>
+
+          <div className="p-4">
             <input
-              {...register("firstName", { required: "This field is required" })}
-              id="firstName"
+              type="submit"
+              className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
+              disabled={!isValid}
             />
           </div>
-          <p>{errors?.firstName?.message}</p>
-        </div>
 
-        <div className="p-4">
           <div>
-            <label htmlFor="lastName">Last Name: </label>
+            <p>{messageSent}</p>
           </div>
-          <div>
-            <input
-              {...register("lastName", {
-                required: "This field is required",
-                maxLength: { value: 5, message: "last name too long" },
-              })}
-              id="lastName"
-            />
-          </div>
-          <p>{errors?.lastName?.message}</p>
-        </div>
-
-        <div className="p-4">
-          <div>
-            <label htmlFor="age">Age: </label>
-          </div>
-          <div>
-            <input
-              type="number"
-              {...register("age", { valueAsNumber: true })}
-              id="age"
-            />
-          </div>
-        </div>
-
-        <div className="p-4">
-          <div>
-            <label htmlFor="gender">Your Gender: </label>
-          </div>
-          <div>
-            <select {...register("gender")} id="gender">
-              <option value="">Select...</option>
-              <option value="male">male</option>
-              <option value="female">female</option>
-              <option value="other">other</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="p-4">
-          <label htmlFor="developer">Are you a developer?</label>
-          <input
-            {...register("developer")}
-            value="yes"
-            type="checkbox"
-            name="developer"
-            id="developer"
-            className="ml-4"
-          />
-        </div>
-
-        <div className="p-4">
-          <input
-            type="submit"
-            className="p-2 rounded-md border border-solid border-stone-900 text-stone-900 bg-amber-100 hover:text-amber-100 hover:bg-stone-900"
-            disabled={!isValid}
-          />
-        </div>
-      </form>
+        </form>
+      </div>
     </section>
   );
 };
